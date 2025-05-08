@@ -1,0 +1,111 @@
+.body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.background-video.fade {
+  opacity: 0;
+}
+
+body {
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+}
+
+.Weather {
+  place-self: center;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(1px);
+  border-radius: 15px;
+  padding: 40px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-bar input {
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  padding-left: 25px;
+  color: #626262;
+  background: #ebfffc;
+  font-size: 18px;
+}
+
+.search-bar img {
+  width: 50px;
+  padding: 15px;
+  border-radius: 50%;
+  background: #ebfffc;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.search-bar img:hover {
+  transform: scale(1.1);
+}
+
+.WeatherIcon {
+  width: 150px;
+  margin: 30px 0;
+}
+
+.Temperature {
+  color: #fff;
+  font-size: 80px;
+  line-height: 1;
+}
+
+.Location {
+  color: #fff;
+  font-size: 40px;
+}
+
+.WeatherData {
+  width: 100%;
+  margin-top: 40px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.WeatherData .Col {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 22px;
+}
+
+.WeatherData .Col span {
+  display: block;
+  font-size: 16px;
+}
+
+.WeatherData .Col img {
+  width: 26px;
+  margin-top: 10px;
+}
