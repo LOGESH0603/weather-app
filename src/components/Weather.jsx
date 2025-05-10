@@ -74,6 +74,7 @@ const Weather = () => {
 
       const iconCode = data.weather[0]?.icon;
       const newVideo = backgroundVideos[iconCode] || "clear.mp4";
+      console.log("New video:", newVideo);
 
       if (newVideo !== currentVideo) {
         setFade(true);
@@ -111,59 +112,71 @@ const Weather = () => {
           playsInline
           className={`background-video ${fade ? "fade" : ""}`}
         >
-          <source src={`/videos/${currentVideo}`} type="video/mp4" />
+          <source
+            src={`${import.meta.env.BASE_URL}videos/${currentVideo}`}
+            type="video/mp4"
+          />
         </video>
       )}
-      <div className="Weather">
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                search(city);
-              }
-            }}
-          />
-          <img
-            src={SearchIcon}
-            alt="Search"
-            onClick={() => search(city)}
-            style={{ cursor: "pointer" }}
-          />
-        </div>
-        {WeatherData ? (
-          <>
-            <img
-              src={WeatherData.icon}
-              alt="Weather Icon"
-              className="WeatherIcon"
-            />
-            <p className="Temperature">{WeatherData.temperature}°C</p>
-            <p className="Location">{WeatherData.location}</p>
-            <div className="WeatherData">
-              <div className="Col">
-                <img src={HumidityIcon} alt="Humidity" />
-                <div>
-                  <p>{WeatherData.humidity}%</p>
-                  <span>Humidity</span>
-                </div>
-              </div>
 
-              <div className="Col">
-                <img src={WindIcon} alt="Wind Speed" />
-                <div>
-                  <p>{WeatherData.windSpeed} km/h</p>
-                  <span>Wind Speed</span>
+      <div className="main-container">
+        <div id="title">
+          <h1>Weather API</h1>
+          <p>Real-time updates on current weather conditions.</p>
+        </div>
+
+        <div className="Weather">
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Search"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  search(city);
+                }
+              }}
+            />
+            <img
+              src={SearchIcon}
+              alt="Search"
+              onClick={() => search(city)}
+              style={{ cursor: "pointer" }}
+            />
+          </div>
+
+          {WeatherData ? (
+            <>
+              <img
+                src={WeatherData.icon}
+                alt="Weather Icon"
+                className="WeatherIcon"
+              />
+              <p className="Temperature">{WeatherData.temperature}°C</p>
+              <p className="Location">{WeatherData.location}</p>
+              <div className="WeatherData">
+                <div className="Col">
+                  <img src={HumidityIcon} alt="Humidity" />
+                  <div>
+                    <p>{WeatherData.humidity}%</p>
+                    <span>Humidity</span>
+                  </div>
+                </div>
+
+                <div className="Col">
+                  <img src={WindIcon} alt="Wind Speed" />
+                  <div>
+                    <p>{WeatherData.windSpeed} km/h</p>
+                    <span>Wind Speed</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </>
-        ) : (
-          <p>Loading weather data...</p>
-        )}
+            </>
+          ) : (
+            <p>Loading weather data...</p>
+          )}
+        </div>
       </div>
     </div>
   );
